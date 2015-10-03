@@ -15,5 +15,13 @@
 		function checkoutCart() {
 
 		}
+
+		function viewCart() {
+			
+		}
+
+		function viewHistory() {
+
+		}
 	}
 ?>

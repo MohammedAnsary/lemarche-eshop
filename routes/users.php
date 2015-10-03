@@ -1,9 +1,7 @@
 <?php
 	//Example Route
-	route('/user/hello', function() {
-		//Do some stuff
-		echo 'Hello World!';
-		//Then exit
+	route('/user/register', function() {
+		var_dump(User::register('Mohammed', 'Ansary', 'm@gmail.com', 'mohalaa123', 'mohalaa123'));
 		exit();
 	});
 ?>

@@ -18,4 +18,12 @@
 			call_user_func($callback);
 		}
 	}
+
+	function isValidEmail($email) {
+		return !filter_var($email, FILTER_VALIDATE_EMAIL) === false;
+	}
+
+	function isValidPassword($password) {
+		return strlen($password) >= 8;
+	}
 ?>
