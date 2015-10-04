@@ -13,7 +13,7 @@
 		return $parsed;
 	}
 
-	function route($route, $callback) {
+	function router($route, $callback) {
 		if($route == $GLOBALS['current_route']) {
 			call_user_func($callback);
 		}
