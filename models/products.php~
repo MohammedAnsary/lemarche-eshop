@@ -61,7 +61,7 @@
 				$viewHistory = json_decode(DB::query('SELECT p.name,p.price,p.avatar FROM cart c,product p WHERE c.user_id = ? AND c.product_id=p.id AND c.status=1', 'i', [$_SESSION['id']],1), true);
 				if($viewHistory['status'] = 'OK')
 				{
-				return DB::query('SELECT p.name,p.price,p.avatar FROM cart c,product p WHERE c.user_id = ? AND c.product_id=p.id AND c.status=1', 'i', [$_SESSION['id']],1);
+				return DB::query('SELECT p.name,p.price,p.avatar FROM cart c,product p WHERE c.user_id = ? AND c.product_id=p.id AND c.status=1', 'i', [$_SESSION['id']],1));
 			}
 				$messages['products_list'] = 'You did not buy any products yet.';
 
