@@ -2,7 +2,7 @@
 	require_once('./config/dbconfig.php');
 	 class DB {
 		function query($queryStr, $types, $params, $retrieve) {
-			$db = new mysqli($GLOBALS['dbhost'], $GLOBALS['dbuser'], $GLOBALS['dbpassword'], $GLOBALS['$dbschema']);
+			$db = new mysqli($GLOBALS['dbhost'], $GLOBALS['dbuser'], $GLOBALS['dbpassword'], $GLOBALS['dbschema']);
 			$parameters = array();
 			$response = array();
 			$parameters[] = &$types;

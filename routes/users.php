@@ -5,7 +5,7 @@
 		exit();
 	});
 	router('/user/test', function() {
-		var_dump($_SESSION);
+		var_dump(User::register('Abdo', 'Mahmoud', 'asd@gmail.com', 'password1', 'password1'));
 		exit();
 	});
 ?>
