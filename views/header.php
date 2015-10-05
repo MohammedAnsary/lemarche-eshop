@@ -18,13 +18,30 @@
 					<div class="account">
 						<h3>Mohammed<span class="menu-icon"><img class="img-thumb" src="http://pre15.deviantart.net/2ecc/th/pre/f/2013/007/9/1/chibi_gon_2011_by_zat3am-d5qtl8s.jpg"></span></h3>
 						<ul class="menu-list">
-							<li><a href="#">Edit Profile<span class="menu-icon fa fa-cog"></span></a></li>
-							<li><a href="#">View History<span class="menu-icon fa fa-history"></span></a></li>
-							<li><a href="#">Logout<span class="menu-icon fa fa-sign-out"></span></a></li>
+							<li>
+								<a href="editprofil">Edit Profile<span class="menu-icon fa fa-cog"></span></a>
+								</li>
+							<li>
+								<a href="history">View History<span class="menu-icon fa fa-history"></span></a>
+							</li>
+							<li>
+								<a href="logout">Logout<span class="menu-icon fa fa-sign-out"></span></a>
+							</li>
 						</ul>
 					</div>
 					<div class="cart">
 						<h3>Cart<span class="menu-icon fa fa-shopping-cart"></span></h3>
+						<ul class="cart-list">
+							<li>
+								Product 1<div class="close-btn menu-icon"><span class="fa fa-times"></span></div>
+							</li>
+							<li>
+								Product 2<div class="close-btn menu-icon"><span class="fa fa-times"></span></div>
+							</li>
+							<li>
+								Product 3<div class="close-btn menu-icon"><span class="fa fa-times"></span></div>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>

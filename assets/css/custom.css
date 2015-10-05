@@ -118,9 +118,16 @@ header .menu {
 	padding: 0;
 	font-size: 25px;
 }
+.cart-list li,
 .menu-list li {
 	position: relative;
 	width: 100%;
+}
+.cart-list li {
+	display: block;
+	position: relative;
+	width: 100%;
+	padding: 12px 25px 12px 25px;
 }
 .menu-list li a {
 	display: block;
@@ -136,7 +143,13 @@ header .menu {
 	background-color: #082C38;
 	color: white;
 }
-.menu-list li a span{
+.cart-list li .menu-icon,
+.menu-list li a .menu-icon {
 	right: 33px;
 	bottom: 16px;
+}
+.cart-list li .menu-icon {
+	color: #EF476F;
+	cursor: pointer;
+	bottom: 8px;
 }
