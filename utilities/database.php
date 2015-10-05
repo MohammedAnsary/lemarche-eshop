@@ -31,6 +31,7 @@
 					$db->close();
 					return json_encode(array('status' => 'OK', 'data' => json_encode($response)));
 				} else {
+					var_dump($db->error);
 					return json_encode(array('status' => 'ERR', 'msg' => 'Internal Error Code 3'));
 				}
 			}
