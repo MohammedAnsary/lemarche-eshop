@@ -1,0 +1,65 @@
+@font-face {
+	font-family: Title;
+	src: url('../fonts/Champagne & Limousines.ttf');
+}
+html {
+	overflow-x: hidden;
+}
+html, body {
+	margin: 0px;
+	padding: 0px;
+	/*background-color: #F7CA62;*/
+	background-color: #06D6A0;
+	overflow-x: hidden;
+	-webkit-overflow-x: hidden;
+}
+body {
+	overflow-x: visible;
+	overflow-x: hidden;
+}
+header {
+	background-color: black;
+	height: 75px;
+	font-family: Title;
+	font-size: 50px;
+	color: white;
+}
+header .title,
+header .controls {
+	color: white;
+	position: absolute;
+	top: 0px;
+}
+header .title {
+	left: 0px;
+	padding: 3px 25px 3px 25px;
+}
+header .title,
+header .title:hover,
+header .title:active,
+header .title:visited {
+	text-decoration: none;
+}
+header .controls {
+	top: -10px;
+	right: 0px;
+	box-sizing: border-box;
+	height: 75px;
+	width: 80px;
+	cursor: pointer;
+	z-index: 1000;
+}
+header .controls svg {
+	top: 10px;
+}
+header .menu {
+	position: absolute;
+	width: 500px;
+	height: 100%;
+	right: -500px;
+	background: #073B4C;
+	transition: 0.3s all ease;
+}
+.active {
+	right: 0px !important;
+}
