@@ -18,7 +18,7 @@ body {
 	overflow-x: hidden;
 }
 header {
-	background-color: black;
+	/*background-color: black;*/
 	height: 75px;
 	font-family: Title;
 	font-size: 50px;
@@ -54,12 +54,89 @@ header .controls svg {
 }
 header .menu {
 	position: absolute;
-	width: 500px;
+	width: 400px;
 	height: 100%;
-	right: -500px;
+	right: -400px;
 	background: #073B4C;
 	transition: 0.3s all ease;
 }
 .active {
 	right: 0px !important;
+}
+.menu-wrapper {
+	position: relative;
+	margin-top: 8px;
+	width: 100%;
+	font-family: Title;
+	color: white;
+}
+.menu-wrapper h2 {
+	font-size: 50px;
+	top: 0px;
+	left: 0px;
+	margin: 0;
+	padding: 4px 25px 8px 25px;
+	box-sizing: border-box;
+	border-bottom: 2px solid #fff;
+}
+.menu-wrapper h3 {
+	font-size: 45px;
+	top: 0px;
+	left: 0px;
+	margin: 0;
+	padding: 15px 25px 8px 25px;
+	box-sizing: border-box;
+	/*border-bottom: 2px solid #fff;*/
+}
+.account,
+.cart {
+	position: relative;
+	width: 100%%;
+	/*border-bottom: 2px solid #082C38;*/
+}
+.account {
+	/*background-color: red;*/
+}
+.cart {
+	/*background-color: green;*/
+}
+.menu-icon {
+	position: absolute;
+	right: 25px;
+}
+.img-thumb {
+	width: 43px;
+	height: 43px;
+	margin-top: -10px;
+	border-radius: 50%;
+}
+.cart-list,
+.menu-list {
+	list-style: none;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	font-size: 25px;
+}
+.menu-list li {
+	position: relative;
+	width: 100%;
+}
+.menu-list li a {
+	display: block;
+	position: relative;
+	width: 100%;
+	padding: 12px 25px 12px 25px;
+	color: white;
+}
+.menu-list li a:hover,
+.menu-list li a:active,
+.menu-list li a:visited {
+	text-decoration: none;
+	background-color: #082C38;
+	color: white;
+}
+.menu-list li a span{
+	right: 33px;
+	bottom: 16px;
 }

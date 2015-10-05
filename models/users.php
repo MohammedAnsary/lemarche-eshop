@@ -3,6 +3,7 @@
 
 		function register($firstname, $lastname, $email, $password, $confirm) {
 
+			//Initiaize vars
 			$messages = array();
 			$proceed = 1;
 
@@ -55,7 +56,8 @@
 			//Rehash Password
 			$password = password_hash($password, PASSWORD_DEFAULT);
 
-			return DB::query('INSERT INTO user (firstname, lastname, email, `password`, flag) VALUES (?, ?, ?, ?, ?)', 'ssssi', [$firstname, $lastname, $email, $password, 1], 0);
+			//Register
+			return DB::query('INSERT INTO user (firstname, laStname, email, `password`, flag) VALUES (?, ?, ?, ?, ?)', 'ssssi', [$firstname, $lastname, $email, $password, 1], 0);
 		}
 
 		function editProfile() {
@@ -64,8 +66,10 @@
 
 		function auth($email, $password) {
 
+			//Initiaize vars
 			$messages = array();
 
+			//Check if user exists
 			$checkUser = json_decode(DB::query('SELECT * FROM user where email = ? LIMIT 1', 's', [$email], 1), true);
 			if($checkUser['status'] = 'OK') {
 				$data = json_decode($checkUser['data'], true);
@@ -79,7 +83,7 @@
 						$_SESSION['firstname'] = $user['firstname'];
 						$_SESSION['lastname'] = $user['lastname'];
 						$messages['login'] = 'Login successful';
-						return json_encode(array('status' => 'YES', 'messages' => json_encode($messages)));
+						return json_encode(array('status' => 'OK', 'messages' => json_encode($messages)));
 					} else {
 						$messages['login'] = 'Wrong email or password';
 						return json_encode(array('status' => 'NO', 'messages' => json_encode($messages)));
