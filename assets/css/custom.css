@@ -30,7 +30,8 @@ header {
 	color: white;
 }
 header .title,
-header .controls {
+header .controls,
+header .action {
 	color: white;
 	position: absolute;
 	top: 0px;
@@ -39,10 +40,22 @@ header .title {
 	left: 0px;
 	padding: 3px 25px 3px 25px;
 }
+header .action {
+	right: 0px;
+	padding: 3px 25px 3px 25px;
+}
+header .action:nth-child(2) {
+	right: 197px;
+	padding: 3px 25px 3px 25px;
+}
 header .title,
 header .title:hover,
 header .title:active,
-header .title:visited {
+header .title:visited,
+header .action,
+header .action:hover,
+header .action:active,
+header .action:visited {
 	text-decoration: none;
 }
 header .controls {
