@@ -18,7 +18,9 @@ html, body {
 	-webkit-overflow-x: hidden;
 }
 body {
-	/*position:relative;*/
+	position: absolute;
+	min-height: 100%;
+	min-width: 100%;
 	overflow-x: visible;
 	overflow-x: hidden;
 }
@@ -236,13 +238,26 @@ header .menu {
 .form-wrapper .form-element {
 	position: relative;
 	width: 100%;
-	height: 50px;
+	height: auto;
+	color: white;
+	margin-bottom: 20px;
+}
+.form-element p {
+	font-size: 20px;
+	margin-top: 10px;
+	text-align: center;
+}
+.form-wrapper .error-element {
+	position: relative;
+	width: 100%;
+	height: auto;
 	color: white;
 	margin-bottom: 20px;
 }
 .form-element input[type='email'],
 .form-element input[type='text'],
-.form-element input[type='password'] {
+.form-element input[type='password'],
+.form-element .file-mask {
 	width: 100%;
 	outline: none;
 	height: 50px;
@@ -251,7 +266,10 @@ header .menu {
 	border: 2px solid white;;
 	padding: 10px 15px 10px 15px;
 }
-.form-element input[type='email']
+.file-mask {
+	cursor: pointer;
+}
+.form-element input[type='email']:focus,
 .form-element input[type='text']:focus,
 .form-element input[type='password']:focus {
 	outline: none;
@@ -262,12 +280,15 @@ input::-webkit-input-placeholder{
 input:-moz-placeholder {
     color: white;
 }
+input[type='file'] {
+	display: none;
+}
 .form-element span {
 	position: absolute;
 	right: 15px;
 	top: 15px;
 }
-.form-element a {
+.form-element .form-submit {
 	display: block;
 	width: 25%;
 	height: 50px;
@@ -280,20 +301,20 @@ input:-moz-placeholder {
 	text-align: center;
 	padding: 10px 20px 10px 20px;
 }
-.form-element a,
-.form-element a:hover,
-.form-element a:active,
-.form-element a:visited {
+.form-element .form-submit,
+.form-element .form-submit:hover,
+.form-element .form-submit:active,
+.form-element .form-submit:visited {
 	text-decoration: none;
 	background-image:
 }
-.form-element a:hover {
+.form-element .form-submit:hover {
 	color: #06D6A0;
 	background-color: white;
 }
 .form-error {
 	width: 100%;
-	height: 50px;
+	height: auto;
 	color: white;
 	background-color: #EF476F;
 	padding: 10px 15px 10px 15px;
