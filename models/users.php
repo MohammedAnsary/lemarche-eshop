@@ -6,16 +6,23 @@
 			//Initiaize vars
 			$_SESSION['messages'] = array('presence' => '', 'email' => '', 'exists' => '', 'confirm' => '', 'password' => '');
 			$proceed = 1;
-
+			$_SESSION['form'] = array('fname' => $firstname, 'lname' => $lastname, 'email' => $email);
 			//Validate presence of required fields
-			if(!isset($firstname)
-			|| !isset($lastname)
-			|| !isset($email)
-			|| !isset($password)
-			|| !isset($confirm)) {
+			if(!strlen($firstname) > 0
+			|| !strlen($lastname) > 0
+			|| !strlen($email) > 0
+			|| !strlen($password) > 0
+			|| !strlen($confirm) > 0) {
 				$proceed = 0;
 				$_SESSION['messages']['presence'] = 'Please complete required fields';
 			}
+
+			//Not useful since front end md5 generates passwords longer than 8 chars
+			//Validate length of password
+			// if(!isValidPassword($password)) {
+			// 	$proceed = 0;
+			// 	$_SESSION['messages']['password'] = 'Password too short (min 8 characters)';
+			// }
 
 			//Validate password matches confirmation
 			if($password != $confirm) {
@@ -29,17 +36,10 @@
 				$_SESSION['messages']['email'] = 'Please enter a valid email';
 			}
 
-			//Validate length of password
-			if(!isValidPassword($password)) {
-				$proceed = 0;
-				$_SESSION['messages']['password'] = 'Password too short (min 8 characters)';
-			}
-
 			//Check if user exists
 			$checkEmail = json_decode(DB::query('SELECT id FROM user where email = ?', 's', [$email], 1), true);
-			if($checkEmail['status'] = 'OK') {
+			if($checkEmail['status'] == 'OK') {
 				$data = json_decode($checkEmail['data'], true);
-				var_dump($data);
 				if(count($data) > 0) {
 					$proceed = 0;
 					$_SESSION['messages']['exists'] = 'Email exists';
@@ -55,12 +55,11 @@
 
 			//All is good unset messages
 			unset($_SESSION['messages']);
+			unset($_SESSION['form']);
 
-			//Let's upload the avatar(if available)
-			var_dump(isset($image));
+			//Let's resize and save the avatar
 			if(isset($image)) {
 				$filename = uniqid();
-				echo $filename;
 				$handle = new upload($image);
 				if ($handle->uploaded) {
 				  $handle->file_new_name_body   = $filename;
@@ -71,23 +70,25 @@
 					$handle->dir_auto_chmod       = true;
 					$handle->dir_chmod           = 0777;
 					$handle->process('assets/images/users/');
-					var_dump($handle);
 				  if (!$handle->processed) {
 				    $filename ='default.png';
 				    $handle->clean();
 				  }
 				}
 			} else {
-				 var_dump( 'error : ' . $handle->error);
 				$filename ='default.png';
 			}
-			echo $filename;
-		return null;
-		//Rehash Password
-		// 	$password = password_hash($password, PASSWORD_DEFAULT);
-		//
-		// 	//Register
-		// 	return DB::query('INSERT INTO user (firstname, laStname, email, `password`, avatar, flag) VALUES (?, ?, ?, ?, ?, ?)', 'sssssi', [$firstname, $lastname, $email, $password, $filename, 1], 0);
+			// Rehash Password
+			$password = password_hash($password, PASSWORD_DEFAULT);
+
+			//Register
+		 	$completeRegestration = parseJson(DB::query('INSERT INTO user (firstname, laStname, email, `password`, avatar, flag) VALUES (?, ?, ?, ?, ?, ?)', 'sssssi', [$firstname, $lastname, $email, $password, $filename, 1], 0));
+			if($completeRegestration['status'] == 'OK') {
+				return json_encode(array('status' => 'OK'));
+			} else {
+				return json_encode(array('status' => 'ERR'));
+			}
+
 		}
 
 		function editProfile() {
@@ -101,7 +102,7 @@
 
 			//Check if user exists
 			$checkUser = json_decode(DB::query('SELECT * FROM user where email = ? LIMIT 1', 's', [$email], 1), true);
-			if($checkUser['status'] = 'OK') {
+			if($checkUser['status'] == 'OK') {
 				$data = json_decode($checkUser['data'], true);
 				if(count($data) == 0) {
 					$_SESSION['messages']['login'] = 'Wrong email or password';
@@ -125,8 +126,8 @@
 			} else {
 				json_encode(array('status' => 'ERR'));
 			}
-
 		}
 
 	}
+
 ?>

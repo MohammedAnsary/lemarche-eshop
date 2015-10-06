@@ -20,3 +20,8 @@ $( document ).ready(function() {
 	 });
 
 });
+
+var loadFile = function(event) {
+	var preview = document.getElementById('preview');
+	preview.src = URL.createObjectURL(event.target.files[0]);
+}

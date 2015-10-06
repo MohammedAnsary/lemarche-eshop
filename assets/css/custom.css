@@ -48,6 +48,7 @@ header .title:visited{
 	text-decoration: none;
 }
 header .controls {
+	position: fixed;
 	top: -10px;
 	right: 0px;
 	box-sizing: border-box;
@@ -60,11 +61,12 @@ header .controls svg {
 	top: 10px;
 }
 header .menu {
-	position: absolute;
+	position: fixed;
 	width: 400px;
 	height: 100%;
 	min-height: 500px;
 	right: -405px;
+	top: 0px;
 	background: #073B4C;
 	transition: 0.3s all ease;
 	-webkit-box-shadow: -6px 0px 9px -4px rgba(0,0,0,0.75);
@@ -253,6 +255,22 @@ header .menu {
 	height: auto;
 	color: white;
 	margin-bottom: 20px;
+}
+.form-wrapper .form-image {
+	position: relative;
+	width: 285px;;
+	height: 285px;
+	color: white;
+	margin-bottom: 20px;
+	border: 2px solid white;
+	margin-left: auto;
+	margin-right: auto;
+}
+.form-image img {
+	width: 265px;
+	height: 265px;
+	margin-left: 7.5px;
+	margin-top: 7.5px;
 }
 .form-element input[type='email'],
 .form-element input[type='text'],

@@ -7,16 +7,28 @@
 	});
 
 	router('/register', function() {
+
 		if(!isset($_SESSION['messages'])) {
 			$_SESSION['messages'] = array('presence' => '', 'email' => '', 'exists' => '', 'confirm' => '', 'password' => '');
 		};
 		require_once('views/register.php');
+		$_SESSION['messages'] = array('presence' => '', 'email' => '', 'exists' => '', 'confirm' => '', 'password' => '');
+		if(isset($_SESSION['form'])){
+			unset($_SESSION['form']);
+		}
 		exit();
 	});
 
 	router('/registerUserAccount', function() {
 		$register = parseJson(User::register($_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password'], $_POST['confirm'], $_FILES['image']));
-		var_dump($register);
+		if($register['status'] == 'OK') {
+			$_POST = array();
+			header('Location: login');
+		} else if($register['status'] == 'NO') {
+			header('Location: register');
+		} else {
+			header('Location: /lemarche/');
+		}
 		exit();
 	});
 
