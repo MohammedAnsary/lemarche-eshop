@@ -57,6 +57,9 @@
 			unset($_SESSION['messages']);
 			unset($_SESSION['form']);
 
+			//Default filename
+			$filename ='default.png';
+			
 			//Let's resize and save the avatar
 			if($image != null) {
 				$handle = new upload($image);
@@ -79,7 +82,7 @@
 			} else {
 				$filename ='default.png';
 			}
-			
+
 			// Rehash Password
 			$password = password_hash($password, PASSWORD_DEFAULT);
 
@@ -113,6 +116,7 @@
 				} else {
 					$user = $data[0];
 					if(password_verify($password, $user['password'])) {
+
 						$_SESSION['id'] = $user['id'];
 						$_SESSION['firstname'] = $user['firstname'];
 						$_SESSION['lastname'] = $user['lastname'];
@@ -123,9 +127,12 @@
 						unset($_SESSION['form']);
 
 						return json_encode(array('status' => 'OK'));
+
 					} else {
+
 						$_SESSION['messages']['login'] = 'Wrong email or password';
 						return json_encode(array('status' => 'NO'));
+
 					}
 				}
 			} else {

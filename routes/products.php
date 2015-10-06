@@ -1,9 +1,10 @@
 <?php
-	//Example Route
-	router('/product/view', function() {
-		//Do some stuff
-		echo 'Awesome!';
-		//Then exit
+
+	router('/products/view', function() {
+
+		header('Content-Type: application/json');
+		echo Product::viewProducts();
+
 		exit();
 	});
 ?>

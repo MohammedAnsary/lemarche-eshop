@@ -15,7 +15,9 @@
 				return json_encode(array('status' => 'ERR', 'msg' => 'Internal Error Code 1'));
 			} else {
 				if($stmt = $db->prepare($queryStr)) {
-					call_user_func_array(array($stmt, 'bind_param'), $parameters);
+					if(count($params) > 0) {
+						call_user_func_array(array($stmt, 'bind_param'), $parameters);
+					}
 					if(!$stmt->execute()) {
 						$stmt->close();
 						$db->close();
