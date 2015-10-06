@@ -30,7 +30,7 @@
 		$register = parseJson(User::register($_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password'], $_POST['confirm'], $_FILES['image']));
 		if($register['status'] == 'OK') {
 			$_POST = array();
-			unset($_FILES['image']);
+			$_FILES['image'] = null;
 			header('Location: login');
 		} else if($register['status'] == 'NO') {
 			header('Location: register');
@@ -55,7 +55,7 @@
 		exit();
 	});
 
-	router('/user/logout', function() {
+	router('/logout', function() {
 		session_unset();
 		session_destroy();
 		header('Location: /lemarche/');

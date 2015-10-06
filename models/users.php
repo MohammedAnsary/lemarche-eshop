@@ -58,26 +58,28 @@
 			unset($_SESSION['form']);
 
 			//Let's resize and save the avatar
-			if(isset($image)) {
-				$filename = uniqid();
+			if($image != null) {
 				$handle = new upload($image);
 				if ($handle->uploaded) {
-				  $handle->file_new_name_body   = $filename;
+				  $handle->file_new_name_body   = uniqid();
 				  $handle->image_resize         = true;
 				  $handle->image_x              = 256;
 					$handle->image_ratio_y        = false;
 				  $handle->image_y              = 256;
 					$handle->dir_auto_chmod       = true;
-					$handle->dir_chmod           = 0777;
+					$handle->dir_chmod            = 0777;
 					$handle->process('assets/images/users/');
+					$filename = $handle->file_dst_name_body.".".$handle->file_dst_name_ext;
 				  if (!$handle->processed) {
 				    $filename ='default.png';
-				    $handle->clean();
-				  }
+				  } else {
+						$handle->clean();
+					}
 				}
 			} else {
 				$filename ='default.png';
 			}
+			
 			// Rehash Password
 			$password = password_hash($password, PASSWORD_DEFAULT);
 
@@ -114,6 +116,7 @@
 						$_SESSION['id'] = $user['id'];
 						$_SESSION['firstname'] = $user['firstname'];
 						$_SESSION['lastname'] = $user['lastname'];
+						$_SESSION['avatar'] = $user['avatar'];
 
 						//All is good unset messages and temp email
 						unset($_SESSION['messages']);

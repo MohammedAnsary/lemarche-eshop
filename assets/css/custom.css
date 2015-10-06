@@ -168,7 +168,7 @@ header .menu {
 }
 .product-wrapper {
 	width: calc(100% - 50px);
-	text-align: center;
+	text-align: left;
 	margin-left: auto;
 	margin-right: auto;
 	font-size: 0px;
@@ -181,21 +181,24 @@ header .menu {
 	margin-right: 15px;
 	margin-left: 15px;
 	margin-bottom: 30px;
-	background-color: #fff;
 	margin-top: 15px;
 	font-size: 25px;
 	font-family: Title-Bold;
-	padding: 15px 15px 0px 15px;
-	-webkit-box-shadow: -6px 7px 14px -5px rgba(0,0,0,0.75);
-	-moz-box-shadow: -6px 7px 14px -5px rgba(0,0,0,0.75);
-	box-shadow: -6px 7px 14px -5px rgba(0,0,0,0.75);
 }
-.product img {
+.product .image-wrapper {
+	width: 295px;
+	height: 295px;
+	border: 2px solid white;
+}
+.product .image-wrapper img {
 	width: 265px;
 	height: 265px;
+	margin: 15px;
+	margin-top: 15px;
 }
 .product-details {
 	margin-top:  15px;
+	color: white;
 }
 .product-details:after {
   content: "";
@@ -204,27 +207,27 @@ header .menu {
 }
 .product-name {
 	float: left;
-	color: #073B4C;
 }
 .product-price {
 	float: right;
-	color: #EF476F;
 }
 .add-to-cart {
+	text-align: center;
 	display: block;
 	margin-top: 15px;
 	width: 100%;
 	font-weight: bold;
-	background-color: #073B4C;
 	color: white;
 	padding-top: 15px;
 	padding-bottom: 15px;
 	cursor: pointer;
+	border: 2px solid white;
 }
 .add-to-cart:hover,
 .add-to-cart:active,
 .add-to-cart:visited {
-	color: white;
+	background-color: white;
+	color: #06D6A0;
 	text-decoration: none;
 }
 .form-wrapper {
