@@ -12,6 +12,17 @@
 		exit();
 	});
 
+router('/editprofile', function() {
+		require_once('views/editprofile.php');
+		if(isset($_SESSION['form'])){
+			unset($_SESSION['form']);
+		}
+		if(isset($_SESSION['messages'])) {
+			unset($_SESSION['messages']);
+		}
+		exit();
+	});
+
 	router('/register', function() {
 
 		if(!isset($_SESSION['messages'])) {
