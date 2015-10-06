@@ -1,5 +1,11 @@
 <?php
 	//Example Route
+
+	router('/login', function() {
+		require_once('views/login.php');
+		exit();
+	});
+
 	router('/', function() {
 		require_once('views/homepage.php');
 		exit();

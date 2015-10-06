@@ -18,7 +18,7 @@ html, body {
 	-webkit-overflow-x: hidden;
 }
 body {
-	position:relative;
+	/*position:relative;*/
 	overflow-x: visible;
 	overflow-x: hidden;
 }
@@ -30,8 +30,7 @@ header {
 	color: white;
 }
 header .title,
-header .controls,
-header .action {
+header .controls {
 	color: white;
 	position: absolute;
 	top: 0px;
@@ -40,22 +39,10 @@ header .title {
 	left: 0px;
 	padding: 3px 25px 3px 25px;
 }
-header .action {
-	right: 0px;
-	padding: 3px 25px 3px 25px;
-}
-header .action:nth-child(2) {
-	right: 197px;
-	padding: 3px 25px 3px 25px;
-}
 header .title,
 header .title:hover,
 header .title:active,
-header .title:visited,
-header .action,
-header .action:hover,
-header .action:active,
-header .action:visited {
+header .title:visited{
 	text-decoration: none;
 }
 header .controls {
@@ -74,6 +61,7 @@ header .menu {
 	position: absolute;
 	width: 400px;
 	height: 100%;
+	min-height: 500px;
 	right: -405px;
 	background: #073B4C;
 	transition: 0.3s all ease;
@@ -219,6 +207,7 @@ header .menu {
 	color: #EF476F;
 }
 .add-to-cart {
+	display: block;
 	margin-top: 15px;
 	width: 100%;
 	font-weight: bold;
@@ -227,4 +216,86 @@ header .menu {
 	padding-top: 15px;
 	padding-bottom: 15px;
 	cursor: pointer;
+}
+.add-to-cart:hover,
+.add-to-cart:active,
+.add-to-cart:visited {
+	color: white;
+	text-decoration: none;
+}
+.form-wrapper {
+	font-family: Title-Bold;
+	width: 33%;
+	min-width: 300px;
+	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10%;
+	font-size: 20px;
+}
+.form-wrapper .form-element {
+	position: relative;
+	width: 100%;
+	height: 50px;
+	color: white;
+	margin-bottom: 20px;
+}
+.form-element input[type='email'],
+.form-element input[type='text'],
+.form-element input[type='password'] {
+	width: 100%;
+	outline: none;
+	height: 50px;
+	color: white;
+	background-color: transparent;
+	border: 2px solid white;;
+	padding: 10px 15px 10px 15px;
+}
+.form-element input[type='email']
+.form-element input[type='text']:focus,
+.form-element input[type='password']:focus {
+	outline: none;
+}
+input::-webkit-input-placeholder{
+    color: white;
+}
+input:-moz-placeholder {
+    color: white;
+}
+.form-element span {
+	position: absolute;
+	right: 15px;
+	top: 15px;
+}
+.form-element a {
+	display: block;
+	width: 25%;
+	height: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	color: white;
+	border: 2px solid white;
+	background-color: #06D6A0;
+	color: white;
+	text-align: center;
+	padding: 10px 20px 10px 20px;
+}
+.form-element a,
+.form-element a:hover,
+.form-element a:active,
+.form-element a:visited {
+	text-decoration: none;
+	background-image:
+}
+.form-element a:hover {
+	color: #06D6A0;
+	background-color: white;
+}
+.form-error {
+	width: 100%;
+	height: 50px;
+	color: white;
+	background-color: #EF476F;
+	padding: 10px 15px 10px 15px;
+	border: 2px solid #EF476F;
 }
