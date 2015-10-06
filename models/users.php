@@ -53,7 +53,7 @@
 				return json_encode(array('status' => 'NO'));
 			}
 
-			//All is good unset messages
+			//All is good unset messages and temp data
 			unset($_SESSION['messages']);
 			unset($_SESSION['form']);
 
@@ -99,6 +99,7 @@
 
 			//Initiaize vars
 			$_SESSION['messages'] = array('login' => '');
+			$_SESSION['form'] = array('email' => $email);
 
 			//Check if user exists
 			$checkUser = json_decode(DB::query('SELECT * FROM user where email = ? LIMIT 1', 's', [$email], 1), true);
@@ -114,8 +115,9 @@
 						$_SESSION['firstname'] = $user['firstname'];
 						$_SESSION['lastname'] = $user['lastname'];
 
-						//All is good unset messages
+						//All is good unset messages and temp email
 						unset($_SESSION['messages']);
+						unset($_SESSION['form']);
 
 						return json_encode(array('status' => 'OK'));
 					} else {
