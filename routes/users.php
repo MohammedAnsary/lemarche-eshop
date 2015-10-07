@@ -51,6 +51,20 @@ router('/editprofile', function() {
 		exit();
 	});
 
+	router('/editUserAccount', function() {
+		$edit = parseJson(User::editProfile($_SESSION['id'], $_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['oldpassword'], $_POST['newpassword'], $_POST['confirm'], $_FILES['image']));
+		if($edit['status'] == 'OK') {
+			$_POST = array();
+			$_FILES['image'] = null;
+			header('Location: /lemarche/');
+		} else if($edit['status'] == 'NO') {
+			header('Location: editprofile');
+		} else {
+			header('Location: /lemarche/');
+		}
+		exit();
+	});
+
 	router('/loginUserAccount', function() {
 		$login = parseJson(User::auth($_POST['email'], $_POST['password']));
 		if($login['status'] == 'OK') {

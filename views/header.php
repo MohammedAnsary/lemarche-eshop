@@ -20,10 +20,10 @@
 							<h3><?php echo $_SESSION['firstname']; ?><span class="menu-icon"><img class="img-thumb" src="assets/images/users/<?php echo $_SESSION['avatar']; ?>"></span></h3>
 							<ul class="menu-list">
 								<li>
-									<a href="editprofil">Edit Profile<span class="menu-icon fa fa-cog"></span></a>
+									<a href="editprofile">Edit Profile<span class="menu-icon fa fa-cog"></span></a>
 									</li>
 								<li>
-									<a href="history">View History<span class="menu-icon fa fa-history"></span></a>
+									<a class="history">View History<span class="menu-icon fa fa-history"></span></a>
 								</li>
 								<li>
 									<a href="logout">Logout<span class="menu-icon fa fa-sign-out"></span></a>
@@ -32,9 +32,10 @@
 						</div>
 						<div class="cart">
 							<h3>Cart<span class="menu-icon fa fa-shopping-cart"></span></h3>
-							<ul class="cart-list">
-							
+							<ul id="cart-list" class="cart-list">
+
 							</ul>
+
 						</div>
 					<?php } else { ?>
 						<ul class="menu-list">
@@ -49,3 +50,8 @@
 				</div>
 			</div>
 		</header>
+		<div class="oaverlay hidden">
+			<div class="pop-up">
+
+			</div>
+		</div>

@@ -2,9 +2,9 @@
 	$title = 'Register';
 	require_once('header.php');
 ?>
+
 		<form enctype="multipart/form-data" method="post" action="registerUserAccount">
 			<div class="form-wrapper">
-
 				<div class="error-element<?php if(!$_SESSION['messages']['presence']) { echo ' hidden'; } ?>">
 					<div id="missing" class="form-error">
 						<?php if($_SESSION['messages']['presence']) { echo $_SESSION['messages']['presence']; } ?>

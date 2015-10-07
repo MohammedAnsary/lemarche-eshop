@@ -84,13 +84,25 @@
 
 		function checkoutCart($user_id) {
 
-			$checkOutCart = json_decode(DB::query('SELECT * FROM cart WHERE user_id = ? AND status = 0', 'i', [$_SESSION['id']], 1), true);
-			if($checkOutCart['status'] = 'OK')
-			{
-				return DB::query('UPDATE cart set status = ? WHERE user_id=?','ii',[1,$_SESSION['id']], 0);
-			}
-				$messages['products_list'] = 'You have no products in your cart please add some products to your cart to be able to buy them.';
+			$checkOutCart = parseJSON(DB::query('SELECT * FROM cart c,product p WHERE c.user_id = ? AND c.product_id=p.id AND c.status=0', 'i', [$user_id],1));
+			if($checkOutCart['status'] == 'OK') {
+				$products = parseJSON($checkOutCart['data']);
+				for ($i=0; $i < count($products); $i++) {
+					$tempQuery = parseJSON(DB::query('UPDATE product SET stock = ? WHERE id = ?', 'ii', [$products[$i]['stock'] - $products[$i]['quantity'], $products[$i]['product_id']] ,0));
+					if($tempQuery['status'] == 'OK') {
+						$changeStatus = parseJSON(DB::query('UPDATE cart SET status = 1 WHERE user_id = ? AND product_id = ?', 'ii', [$user_id, $products[$i]['product_id']] ,0));
+							if(!$changeStatus['status'] == 'OK') {
+								return json_encode(array('status' => 'ERR1'));
+							}
+					} else {
+						return json_encode(array('status' => 'ERR2'));
+					}
+				}
+				return json_encode(array('status' => 'OK'));
+			} else {
+				return json_encode(array('status' => 'ERR3'));
 
+			}
 		}
 
 		function viewCart($user_id) {
@@ -106,13 +118,13 @@
 
 		function viewHistory($user_id) {
 
-				$viewHistory = json_decode(DB::query('SELECT p.name,p.price,p.avatar FROM cart c,product p WHERE c.user_id = ? AND c.product_id=p.id AND c.status=1', 'i', [$_SESSION['id']],1), true);
-				if($viewHistory['status'] = 'OK')
-				{
-				return DB::query('SELECT p.name,p.price,p.avatar FROM cart c,product p WHERE c.user_id = ? AND c.product_id=p.id AND c.status=1', 'i', [$_SESSION['id']],1);
-			}
-				$messages['products_list'] = 'You did not buy any products yet.';
-
+				$viewHistory = parseJSON(DB::query('SELECT SUM(c.quantity) as total, p.name, p.price, p.id FROM cart c,product p WHERE c.user_id = ? AND c.product_id=p.id AND c.status = 1 GROUP BY p.id', 'i', [$user_id],1));
+				if($viewHistory['status'] = 'OK') {
+					return json_encode($viewHistory);
+				} else {
+					return json_encode(array('status' => 'ERR'));
+				}
 		}
+
 	}
 ?>

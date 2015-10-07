@@ -28,4 +28,16 @@
 		exit();
 	});
 
+	router('/products/history', function() {
+		header('Content-Type: application/json');
+		echo Product::viewHistory($_SESSION['id']);
+		exit();
+	});
+
+	router('/products/checkout', function() {
+		header('Content-Type: application/json');
+		echo Product::checkoutCart($_SESSION['id']);
+		exit();
+	});
+
 ?>

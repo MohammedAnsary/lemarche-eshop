@@ -1,0 +1,30 @@
+CREATE DATABASE lemarche;
+USE lemarche;
+
+CREATE TABLE user(
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    firstname VARCHAR(26) NOT NULL,
+    lastname VARCHAR(26) NOT NULL,
+    email VARCHAR(26) NOT NULL UNIQUE,
+    `password` VARCHAR(255) NOT NULL,
+    avatar VARCHAR(2083),
+    balance DOUBLE(7,3) NOT NULL DEFAULT 0,
+    flag INT(1) NOT NULL DEFAULT 0
+);
+
+CREATE TABLE product(
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(26) NOT NULL,
+    price DOUBLE(7,3) NOT NULL DEFAULT 0,
+    stock INT(6) NOT NULL DEFAULT 0,
+    image VARCHAR(2083),
+    flag INT(1) NOT NULL DEFAULT 0
+);
+
+CREATE TABLE cart(
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    user_id INT(11) NOT NULL,
+    product_id INT(11) NOT NULL,
+    quantity INT(6) NOT NULL DEFAULT 0,
+    `status` INT(2) NOT NULL DEFAULT 0
+);
