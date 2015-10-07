@@ -33,15 +33,7 @@
 						<div class="cart">
 							<h3>Cart<span class="menu-icon fa fa-shopping-cart"></span></h3>
 							<ul class="cart-list">
-								<li>
-									Product 1<div class="close-btn menu-icon"><span class="fa fa-times"></span></div>
-								</li>
-								<li>
-									Product 2<div class="close-btn menu-icon"><span class="fa fa-times"></span></div>
-								</li>
-								<li>
-									Product 3<div class="close-btn menu-icon"><span class="fa fa-times"></span></div>
-								</li>
+							
 							</ul>
 						</div>
 					<?php } else { ?>
